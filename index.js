@@ -37,12 +37,13 @@ app.post("/",function(req,res){
         // res.send(stockSymbol+ " price is "+price+" Rupees On "+dating);
 
         if (error) {
-            res.sendFile(__dirname + "/failure.html");
+          console.log('Error:', error);
           } else {
-            if (response.statusCode == 200) {
-                res.send(stockSymbol+ " Price was ₹"+price+" on "+dating);
+            if (response.statusCode !== 200) {
+                
+                console.log('Status:', res.statusCode);
             } else{
-              res.sendFile(__dirname + "/failure.html");
+              res.send(stockSymbol+ " Price was ₹"+price+" on "+dating);
             }
          
           }
@@ -57,3 +58,11 @@ app.post("/failure",function(req,res){
 app.listen(process.env.PORT ||3000,function(){
     console.log("Server is running");
 });
+
+
+
+//API Key
+// OVQ5IPXU8T4QB29Q
+
+//List Id
+//d7b3114434
